@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAP GUI - O2C Simulation</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="logo">SAP</div>
+    <div>SAP Easy Access</div>
+    <div>User: STUDENT</div>
+    <div>Client: 100</div>
+    <div>Transaction System</div>
+  </div>
+
+  <div class="menubar">
+    <span>System</span>
+    <span>Edit</span>
+    <span>Goto</span>
+    <span>Extras</span>
+    <span>Environment</span>
+    <span>Help</span>
+  </div>
+
+  <div class="toolbar">
+    <button>💾</button>
+    <button>↩</button>
+    <button>✖</button>
+    <button>🔍</button>
+    <button>🖨</button>
+  </div>
+
+  <div class="container">
+
+    <div class="sidebar">
+      <div class="step active" id="s1">VA01 - Sales Order</div>
+      <div class="step" id="s2">VL01N - Delivery</div>
+      <div class="step" id="s3">VL02N - PGI</div>
+      <div class="step" id="s4">VF01 - Billing</div>
+      <div class="step" id="s5">F-28 - Payment</div>
+    </div>
+
+    <div class="main">
+
+      <div class="card" id="step1">
+        <div class="title">VA01 - Create Sales Order</div>
+        <div class="field"><span class="label">Customer:</span><span class="input">Rahul Traders</span></div>
+        <div class="field"><span class="label">Material:</span><span class="input">M-1000 Laptop</span></div>
+        <div class="field"><span class="label">Order Quantity:</span><span class="input">5 EA</span></div>
+        <div class="field"><span class="label">Sales Order:</span><span class="input">50001234</span></div>
+        <button class="primary" onclick="next(1)">Save</button>
+      </div>
+
+      <div class="card hidden" id="step2">
+        <div class="title">VL01N - Create Outbound Delivery</div>
+        <div class="field"><span class="label">Reference SO:</span><span class="input">50001234</span></div>
+        <div class="field"><span class="label">Delivery:</span><span class="input">80004567</span></div>
+        <button class="primary" onclick="next(2)">Post Delivery</button>
+      </div>
+
+      <div class="card hidden" id="step3">
+        <div class="title">VL02N - Post Goods Issue</div>
+        <div class="field"><span class="label">Delivery:</span><span class="input">80004567</span></div>
+        <div class="field"><span class="label">Movement Type:</span><span class="input">601</span></div>
+        <table class="table">
+          <tr>
+            <th>Material</th>
+            <th>Plant</th>
+            <th>Qty</th>
+          </tr>
+          <tr>
+            <td>M-1000 Laptop</td>
+            <td>PL01</td>
+            <td>5</td>
+          </tr>
+        </table>
+        <button class="primary" onclick="next(3)">Post PGI</button>
+      </div>
+
+      <div class="card hidden" id="step4">
+        <div class="title">VF01 - Billing Document</div>
+        <div class="field"><span class="label">Delivery:</span><span class="input">80004567</span></div>
+        <div class="field"><span class="label">Invoice:</span><span class="input">90007890</span></div>
+        <button class="primary" onclick="next(4)">Generate Invoice</button>
+      </div>
+
+      <div class="card hidden" id="step5">
+        <div class="title">F-28 - Incoming Payment</div>
+        <div class="field"><span class="label">Customer:</span><span class="input">Rahul Traders</span></div>
+        <div class="field"><span class="label">Amount:</span><span class="input">₹2,50,000</span></div>
+        <div class="field"><span class="label">Status:</span><span class="input">Cleared</span></div>
+        <button class="primary" onclick="next(5)">Complete</button>
+      </div>
+
+      <div class="card hidden" id="complete">
+        <div class="title">Process Completed</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="statusbar" id="status">Ready</div>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
